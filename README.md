@@ -1,4 +1,4 @@
-# Machine learning prediction of enantioselectivity in the hydrogen-bond-donor-catalyzed asymmetric Mannich reaction
+# Prediction of enantioselectivity in the hydrogen-bond-donor-catalyzed asymmetric Mannich reaction with machine learning
 
 Data and code accompanying the manuscript
 
