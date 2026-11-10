@@ -1,0 +1,31 @@
+# Conda environment for the notebooks in notebooks/.
+#   conda env create -f environment.yml
+#   conda activate mannich-hbd
+# Versions are those recorded in the manifests of the runs reported in the paper.
+# PyTorch is needed only for the chemprop D-MPNN; PyPI wheels for Linux x86_64 include CUDA,
+# on macOS (Apple Silicon) the MPS backend is used.
+name: mannich-hbd
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - llvm-openmp          # OpenMP runtime for xgboost (libomp.dylib on macOS)
+  - pip
+  - pip:
+      - numpy==2.4.6
+      - pandas==3.1.0
+      - scipy==1.17.1
+      - scikit-learn==1.8.0
+      - matplotlib==3.11.2
+      - xgboost==3.2.0
+      - shap==0.54.1
+      - rdkit==2025.9.6
+      - drfp==0.3.7
+      - torch==2.14.1
+      - lightning==2.6.6
+      - chemprop==2.2.4
+      - joblib
+      - psutil
+      - threadpoolctl
+      - jupyterlab
+      - ipykernel

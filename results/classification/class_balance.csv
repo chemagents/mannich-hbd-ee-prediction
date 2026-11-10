@@ -1,0 +1,10 @@
+threshold,split,prevalence,n_test_folds,test_prevalence_min,test_prevalence_median,test_prevalence_max,test_folds_class0_only,test_folds_class1_only
+70,random,0.7776,25,0.7508,0.7801,0.8018,0,0
+70,lorgo_group,0.7776,43,0.0000,0.8182,1.0000,7,3
+70,gkf10_catalyst,0.7776,10,0.5633,0.8196,0.8608,0,0
+80,random,0.6941,25,0.6607,0.6928,0.7267,0,0
+80,lorgo_group,0.6941,43,0.0000,0.7273,1.0000,9,1
+80,gkf10_catalyst,0.6941,10,0.4241,0.7152,0.8228,0,0
+90,random,0.5198,25,0.4775,0.5195,0.5586,0,0
+90,lorgo_group,0.5198,43,0.0000,0.4194,1.0000,13,1
+90,gkf10_catalyst,0.5198,10,0.2342,0.5472,0.7215,0,0

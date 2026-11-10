@@ -1,0 +1,17 @@
+,catalyst,electrophile,nucleophile,solvent,conditions
+regression | XGB | random,0.31,0.261,0.309,0.074,0.045
+regression | RF | random,0.335,0.26,0.305,0.062,0.039
+regression | XGB | gkf10_catalyst,0.285,0.263,0.311,0.092,0.049
+regression | RF | gkf10_catalyst,0.34,0.269,0.297,0.065,0.029
+clf ee>=70 | XGB | random,0.297,0.221,0.275,0.095,0.112
+clf ee>=70 | RF | random,0.311,0.209,0.304,0.071,0.105
+clf ee>=70 | XGB | gkf10_catalyst,0.207,0.242,0.3,0.122,0.129
+clf ee>=70 | RF | gkf10_catalyst,0.206,0.231,0.351,0.054,0.158
+clf ee>=80 | XGB | random,0.268,0.235,0.275,0.094,0.127
+clf ee>=80 | RF | random,0.273,0.243,0.309,0.062,0.113
+clf ee>=80 | XGB | gkf10_catalyst,0.222,0.249,0.271,0.101,0.157
+clf ee>=80 | RF | gkf10_catalyst,0.213,0.29,0.342,0.05,0.104
+clf ee>=90 | XGB | random,0.281,0.258,0.251,0.076,0.135
+clf ee>=90 | RF | random,0.307,0.309,0.243,0.044,0.097
+clf ee>=90 | XGB | gkf10_catalyst,0.227,0.25,0.245,0.085,0.192
+clf ee>=90 | RF | gkf10_catalyst,0.269,0.318,0.252,0.058,0.103

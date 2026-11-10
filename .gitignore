@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+._*
+
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Environments and secrets
+.venv/
+venv/
+.env
+
+# Intermediate caches
+cache/
+
+# ORCA raw outputs (kept outside the repository)
+*.out
+*.gbw
+*.densities
+*.tmp
+*_trj.xyz
+
+# Logs
+*.log
+
+# Run logs written by the modelling notebooks
+run_log.txt

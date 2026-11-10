@@ -1,0 +1,325 @@
+{
+  "notebook": "mannich_regression_v5.ipynb",
+  "created_utc": "2026-10-23T19:48:03+00:00",
+  "python": "3.11.17",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "scipy": "1.17.1",
+    "sklearn": "1.8.0",
+    "matplotlib": "3.11.2",
+    "xgboost": "3.2.0",
+    "torch": null,
+    "lightning": null,
+    "chemprop": null,
+    "rdkit": null
+  },
+  "seeds": {
+    "SEED": 0,
+    "random_repeat_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "per_fold_seed": "SEED + 1000*repeat + fold",
+    "bootstrap_seed": [
+      0,
+      "split index"
+    ]
+  },
+  "config": {
+    "RUN_REPRESENTATIONS": [
+      "physchem",
+      "maccs",
+      "ecfp4",
+      "ecfp4_count",
+      "drfp",
+      "onehot",
+      "dft"
+    ],
+    "RUN_MODELS": [
+      "dummy",
+      "ridge",
+      "svr",
+      "gp",
+      "rf",
+      "xgb"
+    ],
+    "RUN_SPLITS": [
+      "random",
+      "lorgo_group",
+      "gkf10_catalyst"
+    ],
+    "N_FOLDS_RANDOM": 5,
+    "N_FOLDS_GKF_CATALYST": 10,
+    "N_INNER_FOLDS": 5,
+    "N_ITER": 20,
+    "HP_MODE": "once",
+    "N_BOOT": 1000,
+    "CI_LEVEL": 0.95,
+    "GP_N_RESTARTS": 2,
+    "CHEMPROP": {
+      "message_hidden_dim": 300,
+      "depth": 3,
+      "dropout": 0.1,
+      "ffn_hidden_dim": 300,
+      "ffn_num_layers": 2,
+      "batch_size": 64,
+      "max_epochs": 150,
+      "patience": 20,
+      "init_lr": 0.0001,
+      "max_lr": 0.001,
+      "final_lr": 0.0001,
+      "warmup_epochs": 2,
+      "val_fraction": 0.1
+    },
+    "CHEMPROP_DEVICE": "cpu",
+    "PARAM_SPACES": {
+      "ridge": {
+        "model__alpha": [
+          "loguniform",
+          0.001,
+          10000.0
+        ]
+      },
+      "svr": {
+        "model__C": [
+          "loguniform",
+          0.01,
+          1000.0
+        ],
+        "model__gamma": [
+          "loguniform",
+          1e-05,
+          0.1
+        ],
+        "model__epsilon": [
+          "uniform",
+          0.01,
+          0.5
+        ]
+      },
+      "rf": {
+        "model__n_estimators": [
+          "choice",
+          [
+            200,
+            500
+          ]
+        ],
+        "model__max_depth": [
+          "choice",
+          [
+            null,
+            8,
+            16,
+            32
+          ]
+        ],
+        "model__max_features": [
+          "choice",
+          [
+            "sqrt",
+            0.1,
+            0.3
+          ]
+        ],
+        "model__min_samples_leaf": [
+          "choice",
+          [
+            1,
+            2,
+            4,
+            8
+          ]
+        ]
+      },
+      "xgb": {
+        "model__max_depth": [
+          "randint",
+          2,
+          8
+        ],
+        "model__learning_rate": [
+          "loguniform",
+          0.01,
+          0.3
+        ],
+        "model__n_estimators": [
+          "randint",
+          100,
+          1000
+        ],
+        "model__subsample": [
+          "uniform",
+          0.6,
+          1.0
+        ],
+        "model__colsample_bytree": [
+          "uniform",
+          0.3,
+          1.0
+        ],
+        "model__reg_lambda": [
+          "loguniform",
+          0.01,
+          100.0
+        ]
+      }
+    },
+    "CODE_VERSION": "1"
+  },
+  "input_files_sha256": {
+    "mannich_dataset_hbd_corrected_1664_mapped_ocat_v2.csv": "defe3898f68a2824727a3b706237c1dcbceef03098887f2da6d2eef1746c02ab",
+    "features_conditions.csv": "0fd5a24d8f9466c29d4c3460206fea107c71c1fb1f0267e1c5c6314265d44ba4",
+    "features_physchem.csv": "d308e465f72987034c39a11bd428b740f0ec20140d2ffd6a73f1761d330d1810",
+    "features_maccs.csv": "8fc7167c941db6dde9467c17a4b49c401ebe6a201d7710e27171b70dc9151360",
+    "features_ecfp4.csv": "2fa400bb09cfae7011f21dc1a0651247c0c3fa4f9c4e72dfd2912ea52931ba07",
+    "features_ecfp4_count.csv": "8fc2b393dd770184a9eb4176d1dd6d409f8760439e066bf94c074cfaa8b4ed32",
+    "features_drfp.csv": "0abd1b29af942ded126010b9136ce5a4135d0f8886b8f46c95f3342bc16493cc",
+    "features_onehot.csv": "08f7419da51171ed06fa627ce40d2f2d8f1b0042454078ab9f7f3d684c60eed8",
+    "features_dft.csv": "ef5b583e6ce1ee4739d925edbbf90daacb957b7eea84ba073b1d8aa401d3d355"
+  },
+  "fold_files_sha256": {
+    "folds_random.csv": "9d458c1b7b8f4ba1c262b1f19f73e06e825024a8de096ea6bc9283cebf4d37f7",
+    "folds_lorgo_group.csv": "fe641caca6102f3864894cb0a166e7284f1dd8d4e571ac6acc1473acdffdd244",
+    "folds_gkf10_catalyst.csv": "7fe8fe3f0f458ce70d5ec01da092f3a75f963defa34efe5fb64cbb0633fc343a"
+  },
+  "results": {
+    "complete_combinations": [
+      "gkf10_catalyst|cgr|chemprop",
+      "gkf10_catalyst|dft|dummy",
+      "gkf10_catalyst|dft|gp",
+      "gkf10_catalyst|dft|rf",
+      "gkf10_catalyst|dft|ridge",
+      "gkf10_catalyst|dft|svr",
+      "gkf10_catalyst|dft|xgb",
+      "gkf10_catalyst|drfp|dummy",
+      "gkf10_catalyst|drfp|gp",
+      "gkf10_catalyst|drfp|rf",
+      "gkf10_catalyst|drfp|ridge",
+      "gkf10_catalyst|drfp|svr",
+      "gkf10_catalyst|drfp|xgb",
+      "gkf10_catalyst|ecfp4_count|dummy",
+      "gkf10_catalyst|ecfp4_count|gp",
+      "gkf10_catalyst|ecfp4_count|rf",
+      "gkf10_catalyst|ecfp4_count|ridge",
+      "gkf10_catalyst|ecfp4_count|svr",
+      "gkf10_catalyst|ecfp4_count|xgb",
+      "gkf10_catalyst|ecfp4|dummy",
+      "gkf10_catalyst|ecfp4|gp",
+      "gkf10_catalyst|ecfp4|rf",
+      "gkf10_catalyst|ecfp4|ridge",
+      "gkf10_catalyst|ecfp4|svr",
+      "gkf10_catalyst|ecfp4|xgb",
+      "gkf10_catalyst|maccs|dummy",
+      "gkf10_catalyst|maccs|gp",
+      "gkf10_catalyst|maccs|rf",
+      "gkf10_catalyst|maccs|ridge",
+      "gkf10_catalyst|maccs|svr",
+      "gkf10_catalyst|maccs|xgb",
+      "gkf10_catalyst|onehot|dummy",
+      "gkf10_catalyst|onehot|gp",
+      "gkf10_catalyst|onehot|rf",
+      "gkf10_catalyst|onehot|ridge",
+      "gkf10_catalyst|onehot|svr",
+      "gkf10_catalyst|onehot|xgb",
+      "gkf10_catalyst|physchem|dummy",
+      "gkf10_catalyst|physchem|gp",
+      "gkf10_catalyst|physchem|rf",
+      "gkf10_catalyst|physchem|ridge",
+      "gkf10_catalyst|physchem|svr",
+      "gkf10_catalyst|physchem|xgb",
+      "lorgo_group|cgr|chemprop",
+      "lorgo_group|dft|dummy",
+      "lorgo_group|dft|gp",
+      "lorgo_group|dft|rf",
+      "lorgo_group|dft|ridge",
+      "lorgo_group|dft|svr",
+      "lorgo_group|dft|xgb",
+      "lorgo_group|drfp|dummy",
+      "lorgo_group|drfp|gp",
+      "lorgo_group|drfp|rf",
+      "lorgo_group|drfp|ridge",
+      "lorgo_group|drfp|svr",
+      "lorgo_group|drfp|xgb",
+      "lorgo_group|ecfp4_count|dummy",
+      "lorgo_group|ecfp4_count|gp",
+      "lorgo_group|ecfp4_count|rf",
+      "lorgo_group|ecfp4_count|ridge",
+      "lorgo_group|ecfp4_count|svr",
+      "lorgo_group|ecfp4_count|xgb",
+      "lorgo_group|ecfp4|dummy",
+      "lorgo_group|ecfp4|gp",
+      "lorgo_group|ecfp4|rf",
+      "lorgo_group|ecfp4|ridge",
+      "lorgo_group|ecfp4|svr",
+      "lorgo_group|ecfp4|xgb",
+      "lorgo_group|maccs|dummy",
+      "lorgo_group|maccs|gp",
+      "lorgo_group|maccs|rf",
+      "lorgo_group|maccs|ridge",
+      "lorgo_group|maccs|svr",
+      "lorgo_group|maccs|xgb",
+      "lorgo_group|onehot|dummy",
+      "lorgo_group|onehot|gp",
+      "lorgo_group|onehot|rf",
+      "lorgo_group|onehot|ridge",
+      "lorgo_group|onehot|svr",
+      "lorgo_group|onehot|xgb",
+      "lorgo_group|physchem|dummy",
+      "lorgo_group|physchem|gp",
+      "lorgo_group|physchem|rf",
+      "lorgo_group|physchem|ridge",
+      "lorgo_group|physchem|svr",
+      "lorgo_group|physchem|xgb",
+      "random|cgr|chemprop",
+      "random|dft|dummy",
+      "random|dft|gp",
+      "random|dft|rf",
+      "random|dft|ridge",
+      "random|dft|svr",
+      "random|dft|xgb",
+      "random|drfp|dummy",
+      "random|drfp|gp",
+      "random|drfp|rf",
+      "random|drfp|ridge",
+      "random|drfp|svr",
+      "random|drfp|xgb",
+      "random|ecfp4_count|dummy",
+      "random|ecfp4_count|gp",
+      "random|ecfp4_count|rf",
+      "random|ecfp4_count|ridge",
+      "random|ecfp4_count|svr",
+      "random|ecfp4_count|xgb",
+      "random|ecfp4|dummy",
+      "random|ecfp4|gp",
+      "random|ecfp4|rf",
+      "random|ecfp4|ridge",
+      "random|ecfp4|svr",
+      "random|ecfp4|xgb",
+      "random|maccs|dummy",
+      "random|maccs|gp",
+      "random|maccs|rf",
+      "random|maccs|ridge",
+      "random|maccs|svr",
+      "random|maccs|xgb",
+      "random|onehot|dummy",
+      "random|onehot|gp",
+      "random|onehot|rf",
+      "random|onehot|ridge",
+      "random|onehot|svr",
+      "random|onehot|xgb",
+      "random|physchem|dummy",
+      "random|physchem|gp",
+      "random|physchem|rf",
+      "random|physchem|ridge",
+      "random|physchem|svr",
+      "random|physchem|xgb"
+    ],
+    "incomplete_combinations": []
+  }
+}
