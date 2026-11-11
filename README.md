@@ -2,7 +2,7 @@
 
 Data and code accompanying the manuscript
 
-> K. V. Vasechkin, I. D. Nikitin, E. Shirokova, M. V. Fedorov.
+> K. V. Vasechkin, I. D. Nikitin, E. A. Shirokova, M. V. Fedorov.
 > *Prediction of enantioselectivity in the hydrogen-bond-donor-catalyzed asymmetric Mannich reaction with machine learning* (submitted).
 
 The repository contains the reaction dataset used in the study, all molecular and reaction representations,
